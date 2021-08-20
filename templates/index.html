@@ -1,0 +1,50 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  {% include "_modal.html" %}
+  <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+    <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+      <div class="mb-4">
+        <h1 class="text-grey-darkest">Todo List</h1>
+        <div class="flex mt-4">
+          <input
+            type="text"
+            name="search"
+            hx-post="/search/"
+            hx-trigger="keyup changed delay:250ms"
+            hx-indicator=".htmx-indicator"
+            hx-target="#todo-results"
+            placeholder="Search"
+            class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+            autocomplete="off"
+          />
+          <button
+            class="
+              flex-no-shrink
+              p-2
+              border-2
+              rounded
+              text-teal
+              border-teal
+              hover:text-white hover:bg-teal
+            "
+            onclick="toggleModal('modal-id')"
+          >
+            Add
+          </button>
+        </div>
+        <span class="htmx-indicator">Searching...</span>
+      </div>
+      <div id="todo-results">{% include "todo.html" %}</div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+  function toggleModal(modalID) {
+    document.getElementById(modalID).classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
+  }
+</script>
+{% endblock javascript %}
