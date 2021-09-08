@@ -2,6 +2,7 @@
 
 {% block content %}
   {% include "_modal.html" %}
+  
   <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
     <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
       <div class="mb-4">
@@ -35,7 +36,7 @@
         </div>
         <span class="htmx-indicator">Searching...</span>
       </div>
-      <div id="todo-results">{% include "todo.html" %}</div>
+      <div id="todo-results">{% include "todos/todo.html" %}</div>
     </div>
   </div>
 {% endblock content %}
